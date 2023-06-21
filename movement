@@ -1,0 +1,15 @@
+void Update()
+    {
+        //player naar voren en naar achteren aan de hand van WASD inputs
+        transform.position += transform.forward * Input.GetAxis("Vertical") * 5 * Time.deltaTime;
+        transform.position += transform.right * Input.GetAxis("Horizontal") * 5 * Time.deltaTime;
+
+        //sla muis as op op variabelen
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+        //align muis aan player rotatie
+        transform.eulerAngles += new Vector3(-mouseY * 5, mouseX * 5, 0);
+        //maak camera vast aan player met dezelfde rotatie en positie
+        gameObject.transform.position = Camera.main.transform.position;
+        gameObject.transform.rotation = Camera.main.transform.rotation;
+    }
